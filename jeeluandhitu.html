@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeelu and Hitu's First Valentine's</title>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-style: italic;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://media.istockphoto.com/id/1209007611/vector/bright-maroon-deep-red-colored-blotched-and-marble-effect-grunge-wall-texture-backgrounds.jpg?s=612x612&w=0&k=20&c=XmBH8Al_qEzcbgXv8TRVfWab9Lsx-hJJ-Lzg96XUw8o=') no-repeat center center fixed;
+            background-size: cover;
+            animation: fadeInBackground 2s ease-out;
+        }
+
+        /* Smooth background transition */
+        @keyframes fadeInBackground {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Container for each page content */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            display: none;
+            background: rgba(0, 0, 0, 0.8);  /* Darker transparent background */
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: slideIn 1.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translate(-50%, -60%); opacity: 0; }
+            100% { transform: translate(-50%, -50%); opacity: 1; }
+        }
+
+        /* Floating Hearts Effect */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 3em;
+            color: rgba(255, 80, 110, 0.8);
+            animation: floatHearts 6s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes floatHearts {
+            0% { opacity: 0; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-20px); }
+            100% { opacity: 0; transform: translateY(0); }
+        }
+
+        /* Header Styling */
+        header h1 {
+            font-size: 3.5em;
+            color: #ffccd5;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 200, 220, 0.8), 0 0 20px rgba(255, 100, 140, 0.8);
+            animation: glowingText 2s ease-in-out infinite;
+        }
+
+        /* Glowing text animation */
+        @keyframes glowingText {
+            0% { text-shadow: 0 0 5px rgba(255, 100, 140, 0.8), 0 0 10px rgba(255, 150, 180, 0.6); }
+            50% { text-shadow: 0 0 20px rgba(255, 100, 140, 1), 0 0 30px rgba(255, 150, 180, 1); }
+            100% { text-shadow: 0 0 5px rgba(255, 100, 140, 0.8), 0 0 10px rgba(255, 150, 180, 0.6); }
+        }
+
+        /* Love message text */
+        .love-message p {
+            font-size: 1.7em;
+            color: #fff;
+            margin: 20px 0;
+            line-height: 1.6;
+            text-align: justify;
+            padding: 0 20px;
+            opacity: 0;
+            animation: fadeInText 2s ease-out forwards;
+        }
+
+        /* Text animation for fade-in */
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Button Styling */
+        .button {
+            padding: 15px 30px;
+            background-color: #ff4d6d;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.4em;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        /* Pulse animation for button */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 80, 110, 1); }
+            100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 80, 110, 1); }
+        }
+
+        .button:hover {
+            background-color: #ff1a3d;
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 50, 80, 1);
+        }
+
+        .end-message p {
+            font-size: 1.7em;
+            color: white;
+            margin-top: 40px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>    
+    <!-- Floating hearts -->
+    <div class="floating-hearts">
+        <span class="heart" style="top: 10%; left: 20%; animation-delay: 0s;">🤍</span>
+        <span class="heart" style="top: 30%; left: 50%; animation-delay: 1s;">🤍</span>
+        <span class="heart" style="top: 60%; left: 80%; animation-delay: 2s;">🤍</span>
+        <span class="heart" style="top: 80%; left: 10%; animation-delay: 3s;">🤍</span>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="player" autoplay loop>
+        <source src="kudmayi.mp3" type="audio/mp3">
+    </audio>
+
+ <!-- Page Sections (Page 1 to Final) -->
+<div id="page1" class="container home">
+    <header>
+        <h1>💕Happy Valentine's Day!💕</h1>
+    </header>
+    <section class="love-message">
+        <p>Will you spend this Valentine's Day with me?</p>
+        <button class="button" onclick="playAudioAndNextPage('page2')">Yes</button>
+        <button class="button" onclick="handleResponse('no')">No</button>
+    </section>
+</div>
+
+<script>
+    function handleResponse(response) {
+        if (response === 'yes') {
+            // Play audio and go to page2
+            playAudioAndNextPage('page2');
+        } else if (response === 'no') {
+            alert("That's not an option!! Try another time!! 😡😡 JEELUUUUUUUUUUU!!!!!!!!!!!");
+
+            // Play audio immediately after the alert when 'No' is clicked
+            playAudioAndNextPage('page1'); // Replace with your audio function for page1
+
+            // Show the "AGAIN!! 😒🔪" button after the alert and audio
+            let againButton = document.createElement('button');
+            againButton.classList.add('button');
+            againButton.textContent = "AGAIN!! 😒🔪";
+            againButton.onclick = function() {
+                // Bring the user back to page1 when clicked
+                document.getElementById('page1').style.display = 'block';
+                document.getElementById('page2').style.display = 'none'; // Hide page2 if it's on the same page
+                againButton.style.display = 'none'; // Hide the "AGAIN" button after clicking
+            };
+
+            // Append the "AGAIN" button to the body or a specific container
+            document.body.appendChild(againButton); // You can append this to any container you prefer
+        }
+    }
+</script>
+
+
+    <!-- Page 2 -->
+    <div id="page2" class="container page1">
+        <header>
+            <h1>✨💕Happy Valentine's Day, Jeelu!💕✨</h1>
+        </header>
+        <section class="love-message">
+            <p>Hey Jeelu, Happy Valentine’s Day! Even though we’re miles apart today, I feel like you’re right here with me. I wanted to remind you just how much you mean to me. You’re my sunshine, my constant source of happiness. I feel so lucky to have you in my life, and I can’t wait for the day we’ll celebrate all the special moments together in person. Tame mara mate bauj important bani gaya chho!!!</p>
+            <button class="button" onclick="playAudioAndNextPage('page3')">Next</button>
+        </section>
+    </div>
+
+    <!-- Page 3 -->
+    <div id="page3" class="container page2">
+        <header>
+            <h1>✨💕Our Journey Together💕✨</h1>
+        </header>
+        <section class="love-message">
+            <p>I can’t believe how far we’ve come together already, Jeelu. Even though we’ve never met in person, I feel like we’ve shared so much of our hearts and lives. Every call, every message, every little thing we do makes our bond even stronger. It’s incredible to think about how much we’ve grown, how much we’ve learned about each other. I can’t wait to see where our journey takes us, because I know there’s so much more waiting for us.</p>
+            <button class="button" onclick="playAudioAndNextPage('page4')">Next</button>
+        </section>
+    </div>
+
+    <!-- Page 4 -->
+    <div id="page4" class="container page3">
+        <header>
+            <h1>✨💕Memories Together💕✨</h1>
+        </header>
+        <section class="love-message">
+            <p>It feels like time flies when I’m talking to you, Jeelu, and in just one month, we’ve already made so many beautiful memories. From our late-night conversations to the silly moments that always make me laugh, every second has been precious. I smile when I think about our little inside jokes and how you make me feel so understood, even from afar. We’ve shared so much, and I can’t wait to create even more amazing moments with you, my heart.</p>
+            <button class="button" onclick="playAudioAndNextPage('page5')">Next</button>
+        </section>
+    </div>
+
+    <!-- Page 5 -->
+    <div id="page5" class="container page4">
+        <header>
+            <h1>✨💕Looking Forward💕✨</h1>
+        </header>
+        <section class="love-message">
+            <p>Thinking about our future fills me with so much excitement, Jeelu. I know this distance isn’t forever, and the day we finally meet in person will be the start of a whole new chapter. Until then, I’ll cherish every single message and every memory we make together. Our love is growing stronger each day, and I’m more sure than ever that we’re building something beautiful that will last forever.</p>
+            <button class="button" onclick="playAudioAndNextPage('page6')">Next</button>
+        </section>
+    </div>
+
+   <!-- Page 6 -->
+    <div id="page6" class="container page5">
+        <header>
+            <h1>✨💕Surprise Message💕✨</h1>
+        </header>
+        <section class="love-message">
+            <p>I’ve been thinking about you nonstop, Jeelu, and I just wanted to send you a little surprise to let you know how much you adore me. You are truly the best thing that’s ever happened to me, and I feel incredibly blessed to have you by my side. Even though we’re apart right now, it feels like our souls are always connected. I can’t wait for the day when I can hold you close and tell you all of this in person. You’re my forever.</p>
+            <button class="button" onclick="showNextPage('final')">Next</button>
+        </section>
+    </div>
+
+    <!-- Final Page -->
+    <div id="final" class="container page6">
+        <header>
+            <h1>✨💕Final Message💕✨</h1>
+        </header>
+        <section class="love-message">
+            <p>I know we’re just starting this adventure, Jeelu, but I already see forever with you. You’ve shown me what true love feels like, and I can’t imagine my life without you in it. This is just the beginning, my love. There are so many more memories to make, so many more dreams to share. I’m looking forward to spending the rest of my life with you, and no matter how far apart we are now, nothing will ever change how I feel about you. You are my heart, my everything. With all my heart,(yours and only yours) Hitu!!!🥰</p>
+        </section>
+ </section>
+<div class="end-message">
+            <p>I love you soooooooooo much mara Jeelu ❤️! Happy Valentine's Day!</p>
+        </div>
+    </div>
+
+    <script>
+        function playAudioAndNextPage(pageId) {
+            const audio = document.getElementById('player');
+            audio.play();  // Play the audio when the "Next" button is clicked
+            
+            // Move to the next page
+            showNextPage(pageId);
+        }
+
+        function showNextPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.container');
+            pages.forEach(page => page.style.display = 'none');
+
+            // Show the selected page
+            document.getElementById(pageId).style.display = 'block';
+        }
+
+        // Initially show the first page
+        showNextPage('page1');
+    </script>
+
+</body>
+</html>
